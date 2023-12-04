@@ -62,15 +62,15 @@ export type User = {
 
 export type GroupDepartment = {
   [departmentName: string]: {
-    female?: number
-    male?: number
-    hair: {
+    female: number
+    male: number
+    hairs: {
       [hairColor: string]: number
     }
     addressUser: {
       [fullName: string]: string
     }
-    age: number[]
+    ages: number[]
   }
 }
 
@@ -81,7 +81,7 @@ export type DepartmentData = {
     female: number
     ageRange: string
     ageMode: string
-    hair: {
+    hairs: {
       [hairColor: string]: number
     }
     addressUser: {

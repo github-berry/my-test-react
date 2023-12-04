@@ -33,31 +33,32 @@ const GroupDepartment = () => {
 
         users?.forEach((user) => {
           const { company: { department }, hair, firstName, lastName, address: { postalCode }, age, gender } = user
-          const { color: hairColor } = hair
+          const { color: hairName } = hair
 
           if (!groupDepartment[department]) { // initial department
             groupDepartment[department] = {
-              [gender]: 1,
-              hair: { [hairColor]: 1 },
+              male: gender === 'male' ? 1 : 0,
+              female: gender === 'female' ? 1 : 0,
+              hairs: { [hairName]: 1 },
               addressUser: { [`${firstName}${lastName}`]: postalCode },
-              age: [age || 0],
+              ages: [age],
             }
           } else {
-            const { hair: hairName } = groupDepartment[department]
-
+            const { hairs: hairs } = groupDepartment[department]
             groupDepartment[department] = {
-              [gender]: (groupDepartment[department][gender] || 0) + 1,
-              hair: { ...hairName, [hairColor]: (hairName[hairColor] || 0) + 1 },
-              age: [...groupDepartment[department].age, age],
+              male: gender === 'male' ? groupDepartment[department]['male'] + 1 : groupDepartment[department]['male'],
+              female: gender === 'female' ? groupDepartment[department]['female'] + 1 : groupDepartment[department]['female'],
+              hairs: { ...hairs, [hairName]: (hairs[hairName] || 0) + 1 },
+              ages: [...groupDepartment[department].ages, age],
               addressUser: { ...groupDepartment[department].addressUser, [`${firstName}${lastName}`]: postalCode },
             }
           }
         })
 
         const departments: DepartmentData[] = Object.entries(groupDepartment).map(([departmentName, departmentValue]) => {
-          const sortAge = departmentValue.age.sort((a, b) => a - b)
-          const ageMode = findMode(departmentValue.age)
-          const { male = 0, female = 0, hair, addressUser } = departmentValue
+          const sortAge = departmentValue.ages.sort((a, b) => a - b)
+          const ageMode = findMode(departmentValue.ages)
+          const { male, female, hairs, addressUser } = departmentValue
 
           return {
             [departmentName]: {
@@ -65,7 +66,7 @@ const GroupDepartment = () => {
               female,
               ageRange: `${sortAge[0]}-${sortAge[sortAge.length - 1]}`,
               ageMode,
-              hair,
+              hairs,
               addressUser,
             }
           }

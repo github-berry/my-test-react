@@ -79,8 +79,8 @@ const TodoList = () => {
   const inputName = useRef<HTMLInputElement>(null)
   const [groupTypes, setGroupTypes] = useState<Group>({}) // { Fruit: [], Vegetable: [] }
 
-  useEffect(() => {
-    const initGroupType: Group = {} // type have more than 2
+  useEffect(() => { // initial groupTypes
+    const initGroupType: Group = {}
 
     todoListData.forEach((item) => {
       if (!initGroupType[item.type]) {
@@ -104,7 +104,6 @@ const TodoList = () => {
     const item = todoListData.find((item) => item.name.toLowerCase() === value?.toLowerCase())
 
     if (!item) {
-      console.log(item);
       alert('ไม่มีพอข้อมูล')
       return;
     }
@@ -115,7 +114,7 @@ const TodoList = () => {
       return newGroups
     })
 
-    // deleted item from left sideItem
+    // deleted item from sideItem
     const newTodoList: TodoListType[] = todoListData.filter((item) => item.name.toLowerCase() !== value?.toLowerCase())
     todoListData = newTodoList
     inputName.current!.value = ''
@@ -128,7 +127,7 @@ const TodoList = () => {
         return newGroups
       })
 
-      // add item to sidebar
+      // add item to sideItem
       todoListData = [...todoListData, item]
     }, 5000)
   }
