@@ -1,0 +1,15 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+.button-container {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

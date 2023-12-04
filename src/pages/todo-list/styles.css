@@ -1,0 +1,78 @@
+.todo-list-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 16px;
+}
+
+.todo-list-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+¬
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  border-radius: 8px;
+}
+
+.input-container button {
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 8px;
+  border: none;
+  margin: 2px 0;
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.input-container button:hover {
+  background: #808080;
+}
+
+.todo-list-container button {
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 8px;
+  border: none;
+  margin: 2px 0;
+}
+
+.todo-list-container button:hover {
+  background: #808080;
+  color: #FFFFFF;
+}
+
+.type-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.type-name {
+  font-size: 18px;
+  font-weight: bold;
+  background: #FF0000;
+  color: #FFFFFF;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.type-box {
+  border: 1px solid #808080;
+  height: 433px;
+  overflow-y: scroll;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
