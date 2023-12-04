@@ -46,8 +46,8 @@ const GroupDepartment = () => {
           } else {
             const { hairs: hairs } = groupDepartment[department]
             groupDepartment[department] = {
-              male: gender === 'male' ? groupDepartment[department]['male'] + 1 : groupDepartment[department]['male'],
-              female: gender === 'female' ? groupDepartment[department]['female'] + 1 : groupDepartment[department]['female'],
+              ...groupDepartment[department],
+              [gender]: groupDepartment[department][gender] + 1,
               hairs: { ...hairs, [hairName]: (hairs[hairName] || 0) + 1 },
               ages: [...groupDepartment[department].ages, age],
               addressUser: { ...groupDepartment[department].addressUser, [`${firstName}${lastName}`]: postalCode },
